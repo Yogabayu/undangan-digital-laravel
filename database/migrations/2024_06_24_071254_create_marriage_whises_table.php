@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::create('marriage_whises', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('marriage_id');
             $table->string('name');
-            $table->uuid('office_id');
-            $table->uuid('role_id');
+            $table->mediumText('whises');
+            $table->boolean('presence');
             $table->timestamps();
 
-            $table->foreign('office_id')->references('id')->on('offices');
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('marriage_id')->references('id')->on('marriage_datas');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('marriage_whises');
     }
 };

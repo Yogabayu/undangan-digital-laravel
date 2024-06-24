@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Office extends Model
+class Invitation extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id';
-    public $incrementing = false;
+
+    protected $table = 'invitations';
     protected $fillable = [
-        'id',
-        'code',
+        'marriage_id',
         'name',
     ];
-    public function positions()
+
+    public function marriage()
     {
-        return $this->hasMany(Position::class);
+        return $this->belongsTo(MarriageData::class, 'marriage_id', 'id');
     }
 }

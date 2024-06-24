@@ -11,7 +11,7 @@ import vuetify from 'vite-plugin-vuetify'
 export default defineConfig({
   plugins: [
     laravel({
-  input: ['resources/js/main.js'],
+  input: ['resources/css/tailwind.css','resources/js/main.js'],
   refresh: true,
 }),
     vue({

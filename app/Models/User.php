@@ -16,21 +16,16 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'id';
+    public $incrementing = false;
     protected $fillable = [
-        'nik',
-        'name',
+        'id',
+        'role_id',
+        'username',
         'email',
         'password',
-        'telegram_username',
-        'telegram_chatid',
-        'isActive',
-        'position_id',
-        'dirut_id',
-        'dir_id',
-        'bm_id',
-        'asmen_id',
-        'brm_id',
-        'ca_id',
+        'activeUntil',
+        'isAdmin',
     ];
 
     /**
@@ -52,59 +47,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Get the position associated with the user.
-     */
-    public function position()
+    public function role()
     {
-        return $this->belongsTo(Position::class, 'position_id', 'id');
-    }
-
-    /**
-     * Get the director associated with the user.
-     */
-    public function director()
-    {
-        return $this->belongsTo(User::class, 'dir_id');
-    }
-
-    /**
-     * Get the director general associated with the user.
-     */
-    public function directorGeneral()
-    {
-        return $this->belongsTo(User::class, 'dirut_id');
-    }
-
-    /**
-     * Get the branch manager associated with the user.
-     */
-    public function branchManager()
-    {
-        return $this->belongsTo(User::class, 'bm_id');
-    }
-
-    /**
-     * Get the assistant manager associated with the user.
-     */
-    public function assistantManager()
-    {
-        return $this->belongsTo(User::class, 'asmen_id');
-    }
-
-    /**
-     * Get the branch relation manager associated with the user.
-     */
-    public function branchRelationManager()
-    {
-        return $this->belongsTo(User::class, 'brm_id');
-    }
-
-    /**
-     * Get the client advisor associated with the user.
-     */
-    public function clientAdvisor()
-    {
-        return $this->belongsTo(User::class, 'ca_id');
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 }

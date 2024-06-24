@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('templates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('catTemp_id');
             $table->string('name');
-            $table->boolean('canAccess')->default(true);
+            $table->mediumText('desc');
             $table->timestamps();
+
+            $table->foreign('catTemp_id')->references('id')->on('category_templates');
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('templates');
     }
 };

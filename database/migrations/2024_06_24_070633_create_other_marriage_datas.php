@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('other_marriage_datas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('canAccess')->default(true);
+            $table->unsignedBigInteger('marriage_id');
+            $table->string('others');
             $table->timestamps();
+
+            $table->foreign('marriage_id')->references('id')->on('marriage_datas');
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('other_marriage_datas');
     }
 };

@@ -16,17 +16,25 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-
-        $positionIds = DB::table('positions')->pluck('id');
+        $roles = DB::table('roles')->pluck('id');
         $users = [
             [
                 'id' => Str::uuid(),
-                'nik' => '12345678',
-                'name' => 'Administrator',
-                'email' => 'admin@gmail.com',
+                'role_id' => $roles[0],
+                'username' => 'admin',
+                'email' => 'lZ5DZ@example.com',
                 'password' => Hash::make('12345678'),
-                'isActive' => 1,
-                'position_id' => $positionIds->random(),
+                'activeUntil' => now()->addYears(10), // seribu tahun (1000 years)
+                'isAdmin' => true,
+            ],
+            [
+                'id' => Str::uuid(),
+                'role_id' => $roles[1],
+                'username' => 'user-tester',
+                'email' => 'user-tester@example.com',
+                'password' => Hash::make('12345678'),
+                'activeUntil' => now()->addYears(10), // 1 year
+                'isAdmin' => false,
             ],
         ];
 

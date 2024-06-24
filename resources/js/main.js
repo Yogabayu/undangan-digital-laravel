@@ -12,6 +12,9 @@ import Swal from 'sweetalert2'
 import { createApp } from 'vue'
 import Vue3EasyDataTable from 'vue3-easy-data-table'
 import 'vue3-easy-data-table/dist/style.css'
+import '../css/tailwind.css'
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 loadFonts()
 
@@ -72,17 +75,3 @@ app.config.globalProperties.$userPhotoUrl = 'http://localhost:8000/user/photo/';
 /** development */
 /** production */
 
-/** localhost */
-app.config.globalProperties.$filePath = 'http://localhost:8000/file/file/';
-/** development */
-/** production */
-
-/** localhost */
-app.config.globalProperties.$draftUrl = 'http://localhost:8000/draft/';
-/** development */
-/** production */
-
-/** localhost */
-app.config.globalProperties.$drafCommenttUrl = 'http://localhost:8000/draft/comment/';
-/** development */
-/** production */
